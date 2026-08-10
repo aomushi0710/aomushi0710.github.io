@@ -1,0 +1,328 @@
+@font-face {
+    font-family: 'PressStart2P';
+    src: url('font/PressStart2P.ttf') format('truetype');
+    
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 全体の基本設定 */
+body {
+    margin: 0;
+    font-family: 'DotGothic16', Arial, sans-serif;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+/* ヘッダー全体のスタイリング */
+.site-header {
+    display: flex;
+    justify-content: space-between; /* ロゴとボタン群を左右の端に分ける */
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(13, 13, 26, 0.9); /* サイバー感のある薄い黒 */
+    border-bottom: 5px solid rgba(0, 240, 255, 0.3); /* シアンの細い線 */
+    
+    /* スクロールしてもヘッダーが常に画面の上に張り付くようにする設定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10; /* 動画や本文パネル（z-index: 1〜2）よりも確実に手前に出す */
+}
+.site-header .logo {
+    color: #00f0ff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.site-footer {
+    background-color: rgba(13, 13, 26, 0.9);
+    border-top: 1px solid rgba(0, 240, 255, 0.3);
+    color: #a0a0a0;
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+}
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+/* ボタンを横に並べる枠 */
+.header-nav {
+    display: flex;
+    gap: 15px; /* ボタン同士の間隔 */
+}
+
+/* ヘッダー内ボタンの共通スタイル */
+.nav-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* マウスを乗せたときのネオンエフェクト（好みに合わせて色を変えてね） */
+.nav-btn:hover {
+    color: #00f0ff;
+    border-color: #00f0ff;
+    background-color: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+/* トップページのデザイン */
+.top-page {
+    background-color: #f4f4f9;
+    text-align: center;
+    padding-top: 80px;
+}
+.top-page h1 {
+    font-family: 'PressStart2P';
+    font-size: 30px;
+    margin-top: 50px;
+    color: #000;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+.top-page h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #000;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.card {
+    display: block;
+    width: 250px;
+    padding: 30px 20px;
+    background: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.about-me {
+    text-align: left;
+    padding: 0px 120px;
+}
+.contact {
+    padding: 0px 120px;
+    font-family: sans-serif;
+    letter-spacing: 0em;
+}
+
+/* --- ゲーム紹介ページのデザイン --- */
+
+/* 世界観に合わせた背景パターン（bodyのclassで切り替え） */
+.bg-manipulator {
+    background-color: #0d0d1a;
+    color: #fff;
+
+    background-image: url('image/manipulator_background.png');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+}
+.bg-fantasy { background-color: #2b3a27; color: #f0e6d2; }
+.bg-java { background-color: #e6e6e6; color: #333; }
+.bg-unreal { background-color: #1a1a1a; color: #e0e0e0; }
+
+.video-scroll-area {
+    height: 90vh; 
+}
+
+/* 画面固定されるヒーローエリア */
+.hero-media-container {
+    position: stinky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* スクロールで縮小されるラッパー */
+.media-wrapper {
+    pointer-events: auto;
+
+    width: 70%;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+
+    overflow: hidden;
+    border-radius: 15px;
+    transform-origin: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+.media-wrapper img, .media-wrapper video, .media-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 下から被さってくる本文エリア */
+.content-section {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 20px; /* 上下にゆったり余白を持たせる */
+}
+.content-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content-box {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 15px;
+    
+    /* サイバーパンク風のすりガラス設定 */
+    background: rgba(0, 0, 0, 0.75); 
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.3); /* シアンの細い枠線 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: left;
+}
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #FFF;
+}
+
+/* 明るいテーマ（Java用）のときはすりガラスの色を白ベースに反転 */
+.bg-java .content-box {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-panel {
+    background-color: rgba(0, 0, 0, 0.75); /* 後ろの固定背景が透ける */
+    color: #fff;
+    padding: 0px 40px 40px 40px;
+    border-radius: 12px;
+    width: 80%;
+    backdrop-filter: blur(8px);
+    
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ボタンのデザイン */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+.manipulator_buttons {
+    /* ① 色の設定 */
+    background-color: #007bff; /* ボタンの背景色（青色） */
+    color: #ffffff;            /* 文字の色（白色） */
+
+    /* ② 形とサイズの調整 */
+    padding: 12px 24px;        /* 内側の余白（上下 12px、左右 24px） */
+    border: none;              /* 枠線を消す */
+    border-radius: 32px;        /* 角の丸み（数値を大きくすると丸くなる） */
+
+    /* ③ フォントの調整 */
+    font-size: 16px;           /* 文字の大きさ */
+    font-weight: bold;         /* 文字を太字にする */
+
+    cursor: pointer;           /* マウスを乗せたときに指のマークにする */
+}
+.btn {
+    padding: 12px 24px;
+    border-radius: 32px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+
+    /* サイバーパンク感を出すための枠線 */
+    border: 2px solid transparent; 
+    
+    /* 変化の速度（ネオンの伸縮を少しキレのある0.2秒に調整） */
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+.btn-github { 
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 32px;
+    border: 1px solid #fff;
+    border-radius: 12px;
+}
+.btn-download { background-color: #007bff; }
+.btn-download:hover {
+    background-color: #000;
+    color: #fff;
+
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+.back-link { color: inherit; text-decoration: none; display: inline-block; margin-bottom: 20px; }
