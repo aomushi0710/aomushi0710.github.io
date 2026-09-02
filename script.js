@@ -19,6 +19,7 @@ window.addEventListener('scroll', () => {
     wrapper.style.borderRadius = `${radius}px`;
 });
 
+
 // GitHub APIからコミット履歴を取得します
 async function fetchRecentCommits() {
     const username = 'aomushi0710';
