@@ -129,6 +129,57 @@ body {
     transform: translateY(-5px);
 }
 
+.whats-new-box {
+    background-color: rgba(13, 13, 26, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 40px 0;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+.whats-new-title {
+    color: #00f0ff;
+    font-size: 18px;
+    border-bottom: 1px dashed rgba(0, 240, 255, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 0.1em;
+}
+
+.commit-log {
+    list-style: none; /* デフォルトの・を消す */
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.commit-log li {
+    font-family: 'Courier New', monospace; /* プログラミング風のフォント */
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* 記録の各パーツの色分け */
+.repo-name { color: #ff0055; font-weight: bold; }
+.branch-name { color: #8a2be2; }
+.commit-hash { color: #00f0ff; }
+.commit-msg { color: #a0a0a0; margin-left: 10px; }
+
+.view-all-link {
+    text-align: right;
+}
+
+.view-all-link a {
+    color: #00f0ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.view-all-link a:hover {
+    color: #ff0055;
+}
+
 .about-me {
     text-align: left;
     padding: 0px 120px;
