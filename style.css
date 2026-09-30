@@ -6,6 +6,11 @@
     font-style: normal;
 }
 
+/* 文字やインライン要素を中央揃えにする汎用クラス */
+.text-center {
+    text-align: center;
+}
+
 /* 全体の基本設定 */
 body {
     margin: 0;
@@ -311,6 +316,19 @@ body {
     flex-direction: row-reverse;
 }
 
+/* テキストリンクの色調整（.btnクラスを持つボタンは除外） */
+.glass-panel a:not(.btn) {
+    color: #00f0ff; /* 文字色を明るいシアンにする */
+    text-decoration: underline; /* リンクだと分かりやすいように下線を引く */
+    transition: all 0.2s ease-in-out;
+}
+
+/* マウスを乗せたときのネオンエフェクト */
+.glass-panel a:not(.btn):hover {
+    color: #fff; /* 文字を白くする */
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8); /* シアン色に光らせる */
+}
+
 /* ボタンのデザイン */
 .action-buttons {
     display: flex;
@@ -361,13 +379,35 @@ body {
     border: 1px solid #fff;
     border-radius: 12px;
 }
-.btn-download { background-color: #007bff; }
-.btn-download:hover {
-    background-color: #000;
-    color: #fff;
-
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-    transform: scale(1.05);
+.btn-download { 
+    background-color: #007bff; 
+    
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 24px;
+    border: 1px solid #fff;
+    border-radius: 12px;
+}
+.btn-download { 
+    background-color: #007bff; 
+    
+    /* GitHubボタンと同じサイズ・配置設定 */
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 24px; /* アイコンのサイズ（GitHubの32pxより少し小さめが綺麗です） */
+    border-radius: 12px; /* .btn標準の32pxから、GitHubと同じ12pxの角丸に変更 */
 }
 .back-link { color: inherit; text-decoration: none; display: inline-block; margin-bottom: 20px; }
 
